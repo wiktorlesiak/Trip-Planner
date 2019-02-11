@@ -9,7 +9,7 @@
     <ViewFlipper
         android:id="@+id/v_flipper"
         android:layout_width="match_parent"
-        android:layout_height="436dp"
+        android:layout_height="456dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textEmail"
