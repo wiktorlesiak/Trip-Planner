@@ -1,6 +1,7 @@
 package com.trip.planner;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -39,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         int images[] = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5};
 
         v_flipper = findViewById(R.id.v_flipper);
-        buttonRegister = findViewById(R.id.buttonRegister);
-        editEmail = findViewById(R.id.editEmail);
-        editPassword = findViewById(R.id.editPassword);
-        textLogin = findViewById(R.id.textLogin);
+        buttonRegister = findViewById(R.id.btn_login);
+        editEmail = findViewById(R.id.email);
+        editPassword = findViewById(R.id.password);
+        textLogin = findViewById(R.id.reset);
 
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
@@ -57,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     //will open login activity here
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
-
 
         //fot loop
         for(int i = 0; i < images.length; i++){
@@ -75,13 +76,12 @@ public class MainActivity extends AppCompatActivity {
             //email is empty
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
             return;
-
         }
+
         if(TextUtils.isEmpty(password)){
             //password is empty
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
             return;
-
         }
         //if validation ok
         //show progress bar
@@ -96,11 +96,13 @@ public class MainActivity extends AppCompatActivity {
                             //user is successfully registered and logged in
                             //start activity profile activity here
                             Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            progressDialog.cancel();
                         }else {
                             Toast.makeText(MainActivity.this, "Could not register... please try again", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+
     }
 
     public void flipperImages(int image){
