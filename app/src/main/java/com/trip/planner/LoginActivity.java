@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
-        btnLogin = (Button) findViewById(R.id.btn_login);
+        btnLogin = (Button) findViewById(R.id.btn_reset_pass);
         textReset = (TextView) findViewById(R.id.reset);
         signup = (TextView) findViewById(R.id.signup);
         //Get Firebase auth instance
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         textReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
             }
         });
 

@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
         int images[] = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5};
 
         v_flipper = findViewById(R.id.v_flipper);
-        buttonRegister = findViewById(R.id.btn_login);
+        buttonRegister = findViewById(R.id.btn_reset_pass);
         editEmail = findViewById(R.id.email);
         editPassword = findViewById(R.id.password);
         textLogin = findViewById(R.id.reset);
