@@ -29,10 +29,8 @@
         android:layout_marginStart="38dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="15dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,11 +41,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
+        android:layout_marginTop="51dp"
         android:layout_marginEnd="338dp"
         android:text="Email"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textPassword"
@@ -55,7 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
         android:layout_marginTop="27dp"
+        android:layout_marginEnd="310dp"
         android:text="Password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -64,11 +66,11 @@
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginStart="101dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="146dp"
-        android:text="Already a member? Log in"
+        android:text="Forgot Password?"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
@@ -91,11 +93,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="204dp"
         android:text="No Account? Create One!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reset" />
 
