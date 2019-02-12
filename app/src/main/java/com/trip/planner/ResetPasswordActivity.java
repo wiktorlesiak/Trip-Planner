@@ -45,7 +45,7 @@ public class ResetPasswordActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //will open login activity here
-                startActivity(new Intent(ResetPasswordActivity.this, MainActivity.class));
+                startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
             }
         });
 

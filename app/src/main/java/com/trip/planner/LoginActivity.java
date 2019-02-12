@@ -1,12 +1,13 @@
 package com.trip.planner;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,21 +20,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
-    private Button btnLogin;
+    private Button btnLogin, btnBack;
     private TextView textReset, signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
@@ -41,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         // set the view now
         setContentView(R.layout.activity_login);
 
-
+        btnBack = (Button) findViewById(R.id.btn_back2);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btn_reset_pass);
@@ -62,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //will open login activity here
             }
         });
 
