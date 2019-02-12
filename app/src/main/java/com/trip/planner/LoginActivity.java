@@ -68,6 +68,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //will open login activity here
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
 
@@ -103,7 +104,7 @@ public class LoginActivity extends Activity {
                                     if (password.length() < 6) {
                                         inputPassword.setError("Incorrect Password!");
                                     } else {
-                                        Toast.makeText(LoginActivity.this, "Authentication Failed!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginActivity.this, "Incorrect Email or Password", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
                                     Intent intent = new Intent(LoginActivity.this, HomeScreen.class);
