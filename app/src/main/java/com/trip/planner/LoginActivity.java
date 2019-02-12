@@ -1,5 +1,6 @@
 package com.trip.planner;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button btnLogin;
     private TextView textReset, signup;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        progressDialog = new ProgressDialog(this);
         // set the view now
         setContentView(R.layout.activity_login);
 
@@ -45,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_reset_pass);
         textReset = (TextView) findViewById(R.id.reset);
         signup = (TextView) findViewById(R.id.signup);
+
+
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
@@ -80,7 +84,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-
+                progressDialog.setMessage("Logging In...");
+                progressDialog.show();
 
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
@@ -99,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, "Incorrect Email or Password", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+                                    progressDialog.cancel();
                                     Intent intent = new Intent(LoginActivity.this, HomeScreen.class);
                                     startActivity(intent);
 

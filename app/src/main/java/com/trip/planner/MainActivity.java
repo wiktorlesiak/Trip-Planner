@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         progressDialog = new ProgressDialog(this);
-       firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         int images[] = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5};
 
@@ -116,7 +116,7 @@ public class MainActivity extends Activity {
         imageView.setBackgroundResource(image);
 
         v_flipper.addView(imageView);
-        v_flipper.setFlipInterval(6000); //6 seconds interval
+        v_flipper.setFlipInterval(5000); //6 seconds interval
         v_flipper.setAutoStart(true);
 
         //animation
