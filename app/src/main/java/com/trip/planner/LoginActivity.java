@@ -99,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     if (password.length() < 6) {
+                                        progressDialog.cancel();
                                         inputPassword.setError("Incorrect Password!");
                                     } else {
                                         Toast.makeText(LoginActivity.this, "Incorrect Email or Password", Toast.LENGTH_LONG).show();
