@@ -102,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                         progressDialog.cancel();
                                         inputPassword.setError("Incorrect Password!");
                                     } else {
+                                        progressDialog.cancel();
                                         Toast.makeText(LoginActivity.this, "Incorrect Email or Password", Toast.LENGTH_LONG).show();
                                     }
                                 } else {

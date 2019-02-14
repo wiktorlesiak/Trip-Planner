@@ -117,7 +117,7 @@ public class HomeActivity extends AppCompatActivity
         switch (id){
 
             case R.id.nav_account:
-                Intent a= new Intent(HomeActivity.this,MainActivity.class);
+                Intent a= new Intent(HomeActivity.this,Profile.class);
                 startActivity(a);
                 break;
             case R.id.nav_logout:
