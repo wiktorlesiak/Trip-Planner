@@ -123,14 +123,24 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_logout:
                 signOut();
                 break;
-
+            case R.id.nav_share:
+                shareIt();
+                break;
         }
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void shareIt(){
+        Intent myIntent  = new Intent(Intent.ACTION_SEND);
+        myIntent.setType("text/plain");
+        String shareBody = "Im using Trip Planner";
+        String shareSub = "Try it too!";
+        myIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+        myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+        startActivity(Intent.createChooser(myIntent, "Share using"));
+
     }
 
     public void signOut() {
