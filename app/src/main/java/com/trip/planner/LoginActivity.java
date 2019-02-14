@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //will open login activity here
-                startActivity(new Intent(LoginActivity.this, HomeScreen.class));
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
         });
 
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 } else {
                                     progressDialog.cancel();
-                                    Intent intent = new Intent(LoginActivity.this, HomeScreen.class);
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     startActivity(intent);
 
                                     finish();
