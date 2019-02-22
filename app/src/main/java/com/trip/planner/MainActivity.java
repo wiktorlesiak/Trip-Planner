@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
         }
         //if validation ok
         //show progress bar
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("Registering...");
         progressDialog.show();
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -101,7 +101,7 @@ public class MainActivity extends Activity {
                         if(task.isSuccessful()){
                             //user is successfully registered and logged in
                             //start activity profile activity here
-                            Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Complete User Profile", Toast.LENGTH_LONG).show();
                             progressDialog.cancel();
                             startActivity(new Intent(MainActivity.this, UserActivity.class));
 

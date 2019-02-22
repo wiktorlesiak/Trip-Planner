@@ -1,5 +1,6 @@
 package com.trip.planner;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class UserActivity extends AppCompatActivity {
     private Button add;
 
     private FirebaseAuth mAuth;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class UserActivity extends AppCompatActivity {
         editAge = (EditText) findViewById(R.id.editAge);
         editHeight = (EditText) findViewById(R.id.editHeight);
         editWeight = (EditText) findViewById(R.id.editWeight);
+        progressDialog = new ProgressDialog(this);
 
         add = (Button) findViewById(R.id.add);
 
@@ -45,8 +48,11 @@ public class UserActivity extends AppCompatActivity {
                         addName();
                         break;
                 }
+                progressDialog.setMessage("Registering User...");
+                progressDialog.show();
             }
         });
+
     }
 
 
@@ -54,7 +60,7 @@ public class UserActivity extends AppCompatActivity {
         super.onStart();
 
         if(mAuth.getCurrentUser() != null){
-            //handle alrady login user
+            //handle already login user
         }
     }
     private void addName(){
@@ -82,14 +88,17 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(UserActivity.this, "Success!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserActivity.this, "Register Successful!", Toast.LENGTH_LONG).show();
+                    progressDialog.cancel();
                     startActivity(new Intent(UserActivity.this, HomeActivity.class));
                 }else{
+                    progressDialog.cancel();
                     Toast.makeText(UserActivity.this, "Error", Toast.LENGTH_LONG).show();
 
                 }
             }
         });
+
     }
 
 

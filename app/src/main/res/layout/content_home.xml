@@ -14,38 +14,36 @@
         android:layout_width="350dp"
         android:layout_height="47dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="109dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="412dp"
+        android:layout_marginBottom="540dp"
         android:text="Map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileName" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/profileName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="164dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="132dp"
         android:fontFamily="@font/rams"
-        android:text="TextView"
-        android:textSize="18sp"
+        android:text="Name"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Hello"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/rams"
         android:text="Hello,"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
