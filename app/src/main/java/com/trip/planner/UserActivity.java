@@ -1,5 +1,6 @@
 package com.trip.planner;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -81,9 +82,10 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(UserActivity.this, "works", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserActivity.this, "Success!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(UserActivity.this, HomeActivity.class));
                 }else{
-                    Toast.makeText(UserActivity.this, "doesnt work", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserActivity.this, "Error", Toast.LENGTH_LONG).show();
 
                 }
             }

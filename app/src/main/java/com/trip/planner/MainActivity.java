@@ -103,6 +103,8 @@ public class MainActivity extends Activity {
                             //start activity profile activity here
                             Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                             progressDialog.cancel();
+                            startActivity(new Intent(MainActivity.this, UserActivity.class));
+
                         }else {
                             Toast.makeText(MainActivity.this, "Could not register... please try again", Toast.LENGTH_SHORT).show();
                         }

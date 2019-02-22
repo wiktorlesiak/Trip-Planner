@@ -11,15 +11,12 @@
     <ViewFlipper
         android:id="@+id/v_flipper"
         android:layout_width="match_parent"
-        android:layout_height="498dp"
+        android:layout_height="332dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="38dp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/email"
@@ -43,10 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="22dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btn_reset_pass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,11 +78,14 @@
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="109dp"
         android:layout_marginEnd="129dp"
+        android:layout_marginBottom="32dp"
         android:text="Log In"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
         app:layout_constraintStart_toEndOf="@+id/reset"
         app:layout_constraintTop_toBottomOf="@+id/btn_reset_pass" />
 
@@ -95,9 +93,11 @@
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="109dp"
+        android:layout_marginBottom="32dp"
         android:text="Already a member?"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_reset_pass" />
 
@@ -107,12 +107,10 @@
         android:layout_width="382dp"
         android:layout_height="47dp"
         android:layout_marginStart="147dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="148dp"
-        android:layout_marginBottom="33dp"
         android:text="Sign Up"
         android:textColorLink="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
