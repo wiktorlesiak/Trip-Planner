@@ -120,6 +120,10 @@ public class HomeActivity extends AppCompatActivity
                 Intent a= new Intent(HomeActivity.this,Profile.class);
                 startActivity(a);
                 break;
+            case R.id.nav_settings:
+                Intent b= new Intent(HomeActivity.this,UserActivity.class);
+                startActivity(b);
+                break;
             case R.id.nav_logout:
                 signOut();
                 break;

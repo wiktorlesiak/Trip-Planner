@@ -17,8 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Profile"
-            android:label="My Account"></activity>
+        <activity android:name=".UserActivity"></activity>
+        <activity
+            android:name=".Profile"
+            android:label="My Account" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
@@ -38,7 +40,6 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,18 +47,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".ResetPasswordActivity"
             android:label="Reset Password"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".LoginActivity"
             android:label="Sign In"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
