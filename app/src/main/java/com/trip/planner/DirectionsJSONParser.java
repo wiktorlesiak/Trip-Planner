@@ -11,8 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by ADMIN on 5/24/2017.
+ * Created by NgocTri on 12/11/2017.
  */
+
 public class DirectionsJSONParser {
 
     /** Receives a JSONObject and returns a list of lists containing latitude and longitude */
@@ -63,14 +64,13 @@ public class DirectionsJSONParser {
         return routes;
     }
 
-
     /**
-     * Method to decode polyline points
-     * Courtesy : https://jeffreysambells.com/2010/05/27/decoding-polylines-from-google-maps-direction-api-with-java
-     * */
-    private List<LatLng> decodePoly(String encoded) {
+     * Method to decode polyline
+     * Source : http://jeffreysambells.com/2010/05/27/decoding-polylines-from-google-maps-direction-api-with-java
+     */
+    private List decodePoly(String encoded) {
 
-        List<LatLng> poly = new ArrayList<>();
+        List poly = new ArrayList();
         int index = 0, len = encoded.length();
         int lat = 0, lng = 0;
 

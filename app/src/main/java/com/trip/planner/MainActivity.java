@@ -105,7 +105,12 @@ public class MainActivity extends Activity {
                             progressDialog.cancel();
                             startActivity(new Intent(MainActivity.this, UserActivity.class));
 
-                        }else {
+                        }else if(firebaseAuth.getCurrentUser() != null) {
+                            progressDialog.cancel();
+                            Toast.makeText(MainActivity.this, "User already exits... Try to Log In", Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            progressDialog.cancel();
                             Toast.makeText(MainActivity.this, "Could not register... please try again", Toast.LENGTH_SHORT).show();
                         }
                     }
