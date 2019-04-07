@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity
         private FirebaseAuth auth;
         private FirebaseAuth.AuthStateListener authListener;
         private DatabaseReference myRef;
-        private TextView profileName;
+        private TextView profileName, ageNum, heightNum, weightNum, sumNum, sumNum2;
         private FirebaseDatabase mFirebaseDatabase;
         private String userID;
 
@@ -51,6 +51,12 @@ public class HomeActivity extends AppCompatActivity
 
         /*DISPLAY DATABASE CONTENTS*/
         profileName = (TextView) findViewById(R.id.profileName);
+        //get numbers
+        sumNum = (TextView) findViewById(R.id.sumNum);
+        sumNum2 = (TextView) findViewById(R.id.sumNum2);
+        ageNum = (TextView) findViewById(R.id.ageNum);
+        heightNum = (TextView) findViewById(R.id.heightNum);
+        weightNum = (TextView) findViewById(R.id.weightNum);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
         userID = user.getUid();
@@ -114,8 +120,22 @@ public class HomeActivity extends AppCompatActivity
         for(DataSnapshot ds : dataSnapshot.getChildren()){
             User uInfo = new User();
             uInfo.setName(ds.child(userID).getValue(User.class).getName());
-
+            uInfo.setAge(ds.child(userID).getValue(User.class).getAge());
+            uInfo.setHeight(ds.child(userID).getValue(User.class).getHeight());
+            uInfo.setWeight(ds.child(userID).getValue(User.class).getWeight());
+            //get firebase data
             profileName.setText(uInfo.getName());
+            //get firebase data as int
+            ageNum.setText(String.valueOf(uInfo.getAge()));
+            heightNum.setText(String.valueOf(uInfo.getHeight()));
+            weightNum.setText(String.valueOf(uInfo.getWeight()));
+            //CALCULATING BMR FOR MALE
+            double sumMale = 13.75 * uInfo.getWeight() + 5 * uInfo.getHeight() + 6.76 * uInfo.getAge() +66;
+            sumNum.setText(Double.toString(sumMale));
+            //CALCULATING BMR FOR FEMALE
+            double sumFemale = 9.56 * uInfo.getWeight() + 1.85 * uInfo.getHeight() + 4.68 * uInfo.getAge() + 665;
+            sumNum2.setText(Double.toString(sumFemale));
+
 
         }
     }
