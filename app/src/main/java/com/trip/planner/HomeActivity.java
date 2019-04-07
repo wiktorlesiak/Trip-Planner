@@ -14,7 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,13 +32,16 @@ import static android.webkit.ConsoleMessage.MessageLevel.LOG;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-        private Button startButton;
+        private Button startButton, calcButton;
         private FirebaseAuth auth;
         private FirebaseAuth.AuthStateListener authListener;
         private DatabaseReference myRef;
         private TextView profileName, ageNum, heightNum, weightNum, sumNum, sumNum2;
         private FirebaseDatabase mFirebaseDatabase;
         private String userID;
+        Spinner sp;
+        double exercise;
+        User uInfo = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,8 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         startButton = (Button) findViewById(R.id.startButton);
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        sp = (Spinner)findViewById(R.id.spinner);
+        calcButton = (Button) findViewById(R.id.calcButton);
 
         /*DISPLAY DATABASE CONTENTS*/
         profileName = (TextView) findViewById(R.id.profileName);
@@ -118,7 +126,6 @@ public class HomeActivity extends AppCompatActivity
 
     private void showData(DataSnapshot dataSnapshot) {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
-            User uInfo = new User();
             uInfo.setName(ds.child(userID).getValue(User.class).getName());
             uInfo.setAge(ds.child(userID).getValue(User.class).getAge());
             uInfo.setHeight(ds.child(userID).getValue(User.class).getHeight());
@@ -129,12 +136,60 @@ public class HomeActivity extends AppCompatActivity
             ageNum.setText(String.valueOf(uInfo.getAge()));
             heightNum.setText(String.valueOf(uInfo.getHeight()));
             weightNum.setText(String.valueOf(uInfo.getWeight()));
-            //CALCULATING BMR FOR MALE
-            double sumMale = 13.75 * uInfo.getWeight() + 5 * uInfo.getHeight() + 6.76 * uInfo.getAge() +66;
-            sumNum.setText(Double.toString(sumMale));
-            //CALCULATING BMR FOR FEMALE
-            double sumFemale = 9.56 * uInfo.getWeight() + 1.85 * uInfo.getHeight() + 4.68 * uInfo.getAge() + 665;
-            sumNum2.setText(Double.toString(sumFemale));
+
+
+            String names[] = {"inactive and have rather no exercise", "active 1-3 days/week","active 3-5 days/week","active most days","active everyday"};
+
+            ArrayAdapter <String> adapter;
+
+            adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, names);
+
+            sp.setAdapter(adapter);
+
+            sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    switch (position)
+                    {
+                        case 0:
+                            exercise = 1.2;
+                            break;
+                        case 1:
+                            exercise = 1.3;
+                            break;
+                        case 2:
+                            exercise = 1.55;
+                            break;
+                        case 3:
+                            exercise = 1.725;
+                            break;
+                        case 4:
+                            exercise = 1.9;
+                            break;
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            calcButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //CALCULATING BMR FOR MALE
+                    double sumMale = 13.75 * uInfo.getWeight() + 5 * uInfo.getHeight() + 6.76 * uInfo.getAge() +66 ;
+                    double finalSumMale = sumMale * exercise;
+                    sumNum.setText(Double.toString(finalSumMale));
+                    //CALCULATING BMR FOR FEMALE
+                    double sumFemale = 9.56 * uInfo.getWeight() + 1.85 * uInfo.getHeight() + 4.68 * uInfo.getAge() + 665;
+                    double finalSumFemale = sumFemale * exercise;
+                    sumNum2.setText(Double.toString(finalSumFemale));
+                }
+            });
 
 
         }
