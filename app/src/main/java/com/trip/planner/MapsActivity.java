@@ -40,6 +40,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -189,16 +190,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 //https://readyandroid.wordpress.com/calculate-distance-between-two-latlng-points-using-google-api-or-math-function-android/
-                Location loc1 = new Location("");
-                loc1.setLatitude(origin.latitude);
-                loc1.setLongitude(origin.longitude);
+                Location locationA = new Location("point A");
 
-                Location loc2 = new Location("");
-                loc2.setLatitude(dest.latitude);
-                loc2.setLongitude(dest.latitude);
+                locationA.setLatitude(origin.latitude);
+                locationA.setLongitude(origin.longitude);
 
-                double distanceInMeters = loc1.distanceTo(loc2)/1000;
-                distanceText.setText(Double.toString(distanceInMeters));
+                Location locationB = new Location("point B");
+
+                locationB.setLatitude(dest.latitude);
+                locationB.setLongitude(dest.longitude);
+
+                float distance = locationA.distanceTo(locationB)/1000;//To convert Meter in Kilometer
+
+                //double distanceInMeters = loc1.distanceTo(loc2)/1000;
+                //DecimalFormat format = new DecimalFormat("0.#");
+                distanceText.setText(Double.toString(distance));
 
 
 
