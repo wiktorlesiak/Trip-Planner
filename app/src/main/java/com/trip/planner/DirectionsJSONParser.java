@@ -1,18 +1,12 @@
 package com.trip.planner;
 
 import com.google.android.gms.maps.model.LatLng;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-/**
- * Created by NgocTri on 12/11/2017.
- */
 
 public class DirectionsJSONParser {
 
@@ -64,13 +58,14 @@ public class DirectionsJSONParser {
         return routes;
     }
 
-    /**
-     * Method to decode polyline
-     * Source : http://jeffreysambells.com/2010/05/27/decoding-polylines-from-google-maps-direction-api-with-java
-     */
-    private List decodePoly(String encoded) {
 
-        List poly = new ArrayList();
+    /**
+     * Method to decode polyline points
+     decoding-polylines-from-google-maps-direction-api-with-java
+     * */
+    private List<LatLng> decodePoly(String encoded) {
+
+        List<LatLng> poly = new ArrayList<>();
         int index = 0, len = encoded.length();
         int lat = 0, lng = 0;
 

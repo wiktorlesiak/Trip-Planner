@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity
         private FirebaseDatabase mFirebaseDatabase;
         private String userID;
         Spinner sp;
-        double exercise;
+        double exercise, finalSumMale, finalSumFemale;
         User uInfo = new User();
 
     @Override
@@ -120,6 +120,10 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, MapsActivity.class));
+                Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+                i.putExtra("maleBMR", finalSumMale);
+                i.putExtra("femaleBMR", finalSumFemale);
+                startActivity(i);
             }
         });
     }
@@ -167,10 +171,8 @@ public class HomeActivity extends AppCompatActivity
                         case 4:
                             exercise = 1.9;
                             break;
-
                     }
                 }
-
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
 
@@ -181,15 +183,18 @@ public class HomeActivity extends AppCompatActivity
                 @Override
                 public void onClick(View v) {
                     //CALCULATING BMR FOR MALE
-                    double sumMale = 13.75 * uInfo.getWeight() + 5 * uInfo.getHeight() + 6.76 * uInfo.getAge() +66 ;
-                    double finalSumMale = sumMale * exercise;
+                    double sumMale = (13.75 * uInfo.getWeight()) + (5 * uInfo.getHeight()) + (6.76 * uInfo.getAge()) + 66 ;
+                    finalSumMale = sumMale * exercise;
                     sumNum.setText(Double.toString(finalSumMale));
                     //CALCULATING BMR FOR FEMALE
-                    double sumFemale = 9.56 * uInfo.getWeight() + 1.85 * uInfo.getHeight() + 4.68 * uInfo.getAge() + 665;
-                    double finalSumFemale = sumFemale * exercise;
+                    double sumFemale = (9.56 * uInfo.getWeight()) + (1.85 * uInfo.getHeight()) + (4.68 * uInfo.getAge()) + 665;
+                    finalSumFemale = sumFemale * exercise;
                     sumNum2.setText(Double.toString(finalSumFemale));
+
+
                 }
             });
+
 
 
         }
