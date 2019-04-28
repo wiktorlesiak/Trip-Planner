@@ -57,7 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
     TextView distanceText, bmrF, bmrM;
-    Button distButton, nextButton;
+    Button distButton, nextButton, backButton;
 
 
     @Override
@@ -71,6 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         distButton = (Button) findViewById(R.id.distButton);
         nextButton = (Button) findViewById(R.id.nextButton);
+        backButton = (Button) findViewById(R.id.backButton);
 
         Intent intent = getIntent();
         Double maleBMR = intent.getDoubleExtra("maleBMR", 0);
@@ -90,7 +91,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MapsActivity.this, HomeActivity.class));
+            }
+        });
     }
+
 
     /**
      * Manipulates the map once available.
@@ -200,11 +209,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 locationB.setLatitude(dest.latitude);
                 locationB.setLongitude(dest.longitude);
 
+                DecimalFormat format = new DecimalFormat("0.#");
+
                 float distance = locationA.distanceTo(locationB)/1000;//To convert Meter in Kilometer
 
-                //double distanceInMeters = loc1.distanceTo(loc2)/1000;
-                //DecimalFormat format = new DecimalFormat("0.#");
-                distanceText.setText(Double.toString(distance));
+                distanceText.setText(Float.toString(distance));
 
 
 

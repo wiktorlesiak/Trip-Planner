@@ -13,7 +13,6 @@
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="99dp"
-        android:layout_marginEnd="26dp"
         android:layout_marginBottom="4dp"
         android:text="Distance"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,9 +28,26 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="11dp"
         android:layout_marginBottom="15dp"
-        android:text="next"
+        android:text="next →"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/map"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/backButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="126dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="15dp"
+        android:text="← back"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/map"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -51,70 +67,85 @@
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="87dp"
+        android:layout_marginStart="7dp"
         android:layout_marginBottom="16dp"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/bmrF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="65dp"
         android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintStart_toEndOf="@+id/backButton" />
 
     <TextView
         android:id="@+id/bmrM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="65dp"
         android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/map"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/backButton" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="111dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="27dp"
         android:fontFamily="@font/rams"
         android:text="Female BMR"
+        app:layout_constraintBottom_toTopOf="@+id/bmrF"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="87dp"
-        android:layout_marginEnd="119dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/rams"
         android:text="Male BMR"
         app:layout_constraintBottom_toTopOf="@+id/bmrM"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/backButton" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Distance:"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/distanceText"
+        app:layout_constraintStart_toEndOf="@+id/distButton"
+        app:layout_constraintTop_toBottomOf="@+id/map"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="16dp"
+        android:text="KM"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/distanceText"
         app:layout_constraintTop_toBottomOf="@+id/map"
         app:layout_constraintVertical_bias="0.0" />
 
