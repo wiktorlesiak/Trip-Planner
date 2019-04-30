@@ -185,11 +185,13 @@ public class HomeActivity extends AppCompatActivity
                     //CALCULATING BMR FOR MALE
                     double sumMale = (13.75 * uInfo.getWeight()) + (5 * uInfo.getHeight()) + (6.76 * uInfo.getAge()) + 66 ;
                     finalSumMale = sumMale * exercise;
-                    sumNum.setText(Double.toString(finalSumMale));
+                    String maleFormatted = String.format("%.0f", finalSumMale);
+                    sumNum.setText(maleFormatted);
                     //CALCULATING BMR FOR FEMALE
                     double sumFemale = (9.56 * uInfo.getWeight()) + (1.85 * uInfo.getHeight()) + (4.68 * uInfo.getAge()) + 665;
                     finalSumFemale = sumFemale * exercise;
-                    sumNum2.setText(Double.toString(finalSumFemale));
+                    String femaleFormatted = String.format("%.0f", finalSumFemale);
+                    sumNum2.setText(femaleFormatted);
 
 
                 }

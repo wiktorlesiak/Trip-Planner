@@ -56,7 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
-    TextView distanceText, bmrF, bmrM;
+    TextView distanceText, bmrF, bmrM, DistanceDuration;
     Button distButton, nextButton, backButton;
 
 
@@ -68,6 +68,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         distanceText = (TextView) findViewById(R.id.distanceText);
         bmrF = (TextView) findViewById(R.id.bmrF);
         bmrM = (TextView) findViewById(R.id.bmrM);
+        DistanceDuration = (TextView) findViewById(R.id.duration);
+
 
         distButton = (Button) findViewById(R.id.distButton);
         nextButton = (Button) findViewById(R.id.nextButton);
@@ -77,8 +79,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Double maleBMR = intent.getDoubleExtra("maleBMR", 0);
         Double femaleBMR = intent.getDoubleExtra("femaleBMR", 0);
 
-        bmrF.setText(Double.toString(femaleBMR));
-        bmrM.setText(Double.toString(maleBMR));
+        String maleFormatted = String.format("%.0f", maleBMR);
+        String femaleFormatted = String.format("%.0f", femaleBMR);
+
+        bmrM.setText(maleFormatted);
+        bmrF.setText(femaleFormatted);
 
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -209,11 +214,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 locationB.setLatitude(dest.latitude);
                 locationB.setLongitude(dest.longitude);
 
-                DecimalFormat format = new DecimalFormat("0.#");
-
                 float distance = locationA.distanceTo(locationB)/1000;//To convert Meter in Kilometer
+                String formattedValue = String.format("%.2f", distance);
 
-                distanceText.setText(Float.toString(distance));
+                distanceText.setText("Distance: " + formattedValue + "km");
 
 
 
@@ -222,7 +226,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         // Sensor enabled
-        String sensor = "sensor=false";
+        String sensor = "sensor=true";
 
         // Building the parameters to the web service
         String parameters = str_origin + "&" + str_dest + "&" + sensor;
@@ -231,8 +235,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String output = "json";
 
         // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
-
+        //String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
+         String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters +"&key=" +"AIzaSyDBIGe4chVMD15lyKOPPWOdPn5xS-l-7pA";
 
         return url;
     }
@@ -343,7 +347,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         protected void onPostExecute(List<List<HashMap<String, String>>> result) {
             ArrayList<LatLng> points;
-            PolylineOptions lineOptions = null;
+            PolylineOptions lineOptions = new PolylineOptions();
+            String duration = "";
 
             // Traversing through all the routes
             for (int i = 0; i < result.size(); i++) {
@@ -357,6 +362,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (int j = 0; j < path.size(); j++) {
                     HashMap<String, String> point = path.get(j);
 
+                    if(j==1){ // Get duration from the list
+                        duration = (String)point.get("duration");
+                        continue;
+                    }
+
                     double lat = Double.parseDouble(point.get("lat"));
                     double lng = Double.parseDouble(point.get("lng"));
                     LatLng position = new LatLng(lat, lng);
@@ -366,18 +376,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 // Adding all the points in the route to LineOptions
                 lineOptions.addAll(points);
-                lineOptions.width(10);
+                lineOptions.width(5);
                 lineOptions.color(Color.RED);
 
                 Log.d("onPostExecute","onPostExecute lineoptions decoded");
 
             }
 
+            DistanceDuration.setText("Duration: "+duration);
+
+
             // Drawing polyline in the Google Map for the i-th route
             if(lineOptions != null) {
                 mMap.addPolyline(lineOptions);
             }
             else {
+                mMap.addPolyline(lineOptions);
                 Log.d("onPostExecute","without Polylines drawn");
             }
         }
