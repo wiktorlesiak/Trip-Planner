@@ -58,7 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationRequest mLocationRequest;
     TextView distanceText, bmrF, bmrM, DistanceDuration;
     Button distButton, nextButton, backButton;
-
+    float distanceP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +103,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(new Intent(MapsActivity.this, HomeActivity.class));
             }
         });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(distanceP == 0){
+                    Toast.makeText(MapsActivity.this, "Calculate Distance before continuing!", Toast.LENGTH_SHORT).show();
+
+                }else if(distanceP > 0){
+                    startActivity(new Intent(MapsActivity.this, SummaryActivity.class));
+                }
+            }
+        });
     }
+
 
 
     /**
@@ -199,7 +212,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Destination of route
         String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
 
-
+        //button to calculate route distance between two points
         distButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -214,12 +227,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 locationB.setLatitude(dest.latitude);
                 locationB.setLongitude(dest.longitude);
 
-                float distance = locationA.distanceTo(locationB)/1000;//To convert Meter in Kilometer
-                String formattedValue = String.format("%.2f", distance);
+                distanceP = locationA.distanceTo(locationB)/1000;//To convert Meter in Kilometer
+                //Formal value to two decimal numbers
+                String formattedValue = String.format("%.2f", distanceP);
 
                 distanceText.setText("Distance: " + formattedValue + "km");
-
-
 
             }
         });
