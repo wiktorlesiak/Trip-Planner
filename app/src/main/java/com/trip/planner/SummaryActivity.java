@@ -20,9 +20,10 @@ public class SummaryActivity extends AppCompatActivity {
     TextView distance, fBMR, mBMR;
     Button backButton, finishButton;
     Spinner sumS;
-    double mets;
+    double mets, femaleBMR, maleBMR;
     EditText dur;
-    int duration;
+    Float dist;
+    int duration, weight3;
     String femaleFormatted, maleFormatted, distanceFormatted;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +42,10 @@ public class SummaryActivity extends AppCompatActivity {
         finishButton = (Button)findViewById(R.id.finishButton);
 
         Intent intent = getIntent();
-        Double maleBMR = intent.getDoubleExtra("mBMR", 0);
-        Double femaleBMR = intent.getDoubleExtra("fBMR", 0);
-        Float dist = intent.getFloatExtra("distance", 0);
+        maleBMR = intent.getDoubleExtra("mBMR", 0);
+        femaleBMR = intent.getDoubleExtra("fBMR", 0);
+        dist = intent.getFloatExtra("distance", 0);
+        weight3 = intent.getIntExtra("weightt", 0);
 
         maleFormatted = String.format("%.0f", maleBMR);
         femaleFormatted = String.format("%.0f", femaleBMR);
@@ -116,24 +118,27 @@ public class SummaryActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mets == 0) {
-                    Toast.makeText(SummaryActivity.this, "Please select pace before continuing...", Toast.LENGTH_SHORT).show();
-                }else if(mets > 0){
-                    //startActivity(new Intent(HomeActivity.this, MapsActivity.class));
-
-                }
-                if(TextUtils.isEmpty(dur.getText())){
-                    dur.setError("Time is required");
-                    dur.requestFocus();
-                }else{
                     String stringDuration = dur.getText().toString();
                     duration = Integer.parseInt(stringDuration);
-                    Toast.makeText(SummaryActivity.this, "It's working", Toast.LENGTH_SHORT).show();
-                    dur.setError(null);
+                    //Toast.makeText(SummaryActivity.this, "It's working", Toast.LENGTH_SHORT).show();
+                    //dur.setError(null);
+                Intent i = new Intent(getApplicationContext(), FinishActivity.class);
+                i.putExtra("mB", maleBMR);
+                i.putExtra("fB", femaleBMR);
+                i.putExtra("disTT", dist);
+                i.putExtra("metts", mets);
+                i.putExtra("weig", weight3);
+                i.putExtra("durrr", duration);
 
-                }
+
+                startActivity(i);
+
+
+
             }
         });
+
+
 
     }
 

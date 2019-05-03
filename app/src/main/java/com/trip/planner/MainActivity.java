@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             //user is successfully registered and logged in
-                            //start activity profile activity here
+                            //start activity profile activity
                             Toast.makeText(MainActivity.this, "Complete User Profile", Toast.LENGTH_LONG).show();
                             progressDialog.cancel();
                             startActivity(new Intent(MainActivity.this, UserActivity.class));

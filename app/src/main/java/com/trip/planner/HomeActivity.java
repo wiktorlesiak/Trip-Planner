@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity
         Spinner sp;
         double exercise, finalSumMale, finalSumFemale;
         User uInfo = new User();
+        int weight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,13 +125,11 @@ public class HomeActivity extends AppCompatActivity
                 if(finalSumFemale == 0 && finalSumMale == 0) {
                     Toast.makeText(HomeActivity.this, "Calculate BMR before continuing!", Toast.LENGTH_SHORT).show();
                 }else if(finalSumFemale > 0 && finalSumMale > 0){
-                    Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
-                    startActivity(intent);
-                    //startActivity(new Intent(HomeActivity.this, MapsActivity.class));
                     //Send data to Maps Activity
                     Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                     i.putExtra("maleBMR", finalSumMale);
                     i.putExtra("femaleBMR", finalSumFemale);
+                    i.putExtra("weight", weight);
                     startActivity(i);
                 }
 
@@ -191,13 +190,14 @@ public class HomeActivity extends AppCompatActivity
             calcButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                        weight = uInfo.getWeight();
                         //CALCULATING BMR FOR MALE
-                        double sumMale = (13.75 * uInfo.getWeight()) + (5 * uInfo.getHeight()) + (6.76 * uInfo.getAge()) + 66;
+                        double sumMale = (13.75 * weight) + (5 * uInfo.getHeight()) + (6.76 * uInfo.getAge()) + 66;
                         finalSumMale = sumMale * exercise;
                         String maleFormatted = String.format("%.0f", finalSumMale);
                         sumNum.setText(maleFormatted);
                         //CALCULATING BMR FOR FEMALE
-                        double sumFemale = (9.56 * uInfo.getWeight()) + (1.85 * uInfo.getHeight()) + (4.68 * uInfo.getAge()) + 665;
+                        double sumFemale = (9.56 * weight) + (1.85 * uInfo.getHeight()) + (4.68 * uInfo.getAge()) + 665;
                         finalSumFemale = sumFemale * exercise;
                         String femaleFormatted = String.format("%.0f", finalSumFemale);
                         sumNum2.setText(femaleFormatted);

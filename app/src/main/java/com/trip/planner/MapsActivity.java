@@ -60,6 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Button distButton, nextButton, backButton;
     float distanceP;
     String femaleFormatted, maleFormatted, formattedDistance;
+    int weightt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         final Double maleBMR = intent.getDoubleExtra("maleBMR", 0);
         final Double femaleBMR = intent.getDoubleExtra("femaleBMR", 0);
+        weightt = intent.getIntExtra("weight", 0);
 
         maleFormatted = String.format("%.0f", maleBMR);
         femaleFormatted = String.format("%.0f", femaleBMR);
@@ -118,6 +120,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     i.putExtra("mBMR", maleBMR);
                     i.putExtra("fBMR", femaleBMR);
                     i.putExtra("distance", distanceP);
+                    i.putExtra("weightt", weightt);
                     startActivity(i);
                 }
             }
