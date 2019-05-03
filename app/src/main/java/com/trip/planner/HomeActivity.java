@@ -124,7 +124,9 @@ public class HomeActivity extends AppCompatActivity
                 if(finalSumFemale == 0 && finalSumMale == 0) {
                     Toast.makeText(HomeActivity.this, "Calculate BMR before continuing!", Toast.LENGTH_SHORT).show();
                 }else if(finalSumFemale > 0 && finalSumMale > 0){
-                    startActivity(new Intent(HomeActivity.this, MapsActivity.class));
+                    Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                    //startActivity(new Intent(HomeActivity.this, MapsActivity.class));
                     //Send data to Maps Activity
                     Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                     i.putExtra("maleBMR", finalSumMale);

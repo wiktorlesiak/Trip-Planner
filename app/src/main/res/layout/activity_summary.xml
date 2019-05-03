@@ -6,4 +6,187 @@
     android:layout_height="match_parent"
     tools:context=".SummaryActivity">
 
+    <Spinner
+        android:id="@+id/metSpinner"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toTopOf="@+id/hello6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="54dp"
+        android:fontFamily="@font/rams"
+        android:text="SUMMARY"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/hello2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/hello2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginEnd="153dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/rams"
+        android:text="MALE BMR"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/mBMR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hello3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/rams"
+        android:text="FEMALE BMR"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/fBMR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hello4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/rams"
+        android:text="DISTANCE"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hello5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="179dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/rams"
+        android:text="SELECT PACE"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/metSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hello6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginEnd="153dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/rams"
+        android:text="DURATION"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/dur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/backButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="129dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="58dp"
+        android:text="← back"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/finishButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metSpinner" />
+
+    <Button
+        android:id="@+id/finishButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="129dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="58dp"
+        android:text="finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metSpinner" />
+
+    <TextView
+        android:id="@+id/mBMR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="201dp"
+        android:layout_marginEnd="202dp"
+        android:layout_marginBottom="14dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/hello3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fBMR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="201dp"
+        android:layout_marginEnd="202dp"
+        android:layout_marginBottom="18dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/hello4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="201dp"
+        android:layout_marginEnd="202dp"
+        android:layout_marginBottom="23dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/hello5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/dur"
+        android:layout_width="84dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="188dp"
+        android:ems="10"
+        android:hint="minutes"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

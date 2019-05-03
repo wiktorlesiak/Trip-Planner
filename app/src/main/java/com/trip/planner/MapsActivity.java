@@ -59,6 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     TextView distanceText, bmrF, bmrM, DistanceDuration;
     Button distButton, nextButton, backButton;
     float distanceP;
+    String femaleFormatted, maleFormatted, formattedDistance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +77,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         backButton = (Button) findViewById(R.id.backButton);
 
         Intent intent = getIntent();
-        Double maleBMR = intent.getDoubleExtra("maleBMR", 0);
-        Double femaleBMR = intent.getDoubleExtra("femaleBMR", 0);
+        final Double maleBMR = intent.getDoubleExtra("maleBMR", 0);
+        final Double femaleBMR = intent.getDoubleExtra("femaleBMR", 0);
 
-        String maleFormatted = String.format("%.0f", maleBMR);
-        String femaleFormatted = String.format("%.0f", femaleBMR);
+        maleFormatted = String.format("%.0f", maleBMR);
+        femaleFormatted = String.format("%.0f", femaleBMR);
 
         bmrM.setText(maleFormatted);
         bmrF.setText(femaleFormatted);
@@ -112,6 +113,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 }else if(distanceP > 0){
                     startActivity(new Intent(MapsActivity.this, SummaryActivity.class));
+
+                    Intent i = new Intent(getApplicationContext(), SummaryActivity.class);
+                    i.putExtra("mBMR", maleBMR);
+                    i.putExtra("fBMR", femaleBMR);
+                    i.putExtra("distance", distanceP);
+                    startActivity(i);
                 }
             }
         });
@@ -229,9 +236,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 distanceP = locationA.distanceTo(locationB)/1000;//To convert Meter in Kilometer
                 //Formal value to two decimal numbers
-                String formattedValue = String.format("%.2f", distanceP);
+                formattedDistance = String.format("%.2f", distanceP);
 
-                distanceText.setText("Distance: " + formattedValue + "km");
+                distanceText.setText("Distance: " + formattedDistance + "km");
 
             }
         });
@@ -354,6 +361,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
             return routes;
         }
+
 
         // Executes in UI thread, after the parsing process
         @Override
