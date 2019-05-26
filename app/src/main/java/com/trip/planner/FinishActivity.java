@@ -9,11 +9,10 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class FinishActivity extends AppCompatActivity {
-    TextView weightkg;
-    double maleBMR, femaleBMR, mets, BMRFINAL;
+    TextView weightkg,bmrMale, bmrFemale;
+    double maleBMR, femaleBMR, mets, BMRFINAL, finalmale, finalfemale;
     Float dist;
     int duration, weig;
     Button calc;
@@ -25,6 +24,8 @@ public class FinishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finish);
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         weightkg = (TextView) findViewById(R.id.weightkg);
+        bmrMale = (TextView) findViewById(R.id.bmrMaleF);
+        bmrFemale = (TextView) findViewById(R.id.bmrFemaleF);
         calc = (Button) findViewById(R.id.calc);
 
 
@@ -43,6 +44,17 @@ public class FinishActivity extends AppCompatActivity {
                 BMRFINAL = (mets * (weig) * 3.5 / 200) * (duration);
                 weightkg.setText(Double.toString(BMRFINAL));
                 //(MET * (weight) * 3.5 / 200) * (time of activity)
+
+                //CALORIES MALE
+                finalmale = maleBMR + BMRFINAL;
+                finalfemale = femaleBMR + BMRFINAL;
+                String maleFormatted = String.format("%.0f", finalmale);
+                String femaleFormatted = String.format("%.0f", finalfemale);
+
+                bmrMale.setText(maleFormatted);
+
+                bmrFemale.setText(femaleFormatted);
+
             }
         });
 
